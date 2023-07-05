@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-lester-nclouds-sample-app "
-  namespace: { { .Values.namespace } }
+  namespace: {{ .Values.namespace }}
   labels:
     app: "{{ .Release.Name }}-ls-nclouds"
     app.kubernetes.io/name: "{{ .Release.Name }}-ls-nclouds"
 spec:
-  replicas: { { .Values.app.replicas } }
+  replicas: {{ .Values.app.replicas }}
   selector:
     matchLabels:
       app: "{{ .Release.Name }}-ls-nclouds"
@@ -20,12 +20,12 @@ spec:
         - name: "{{ .Release.Name }}-sample-app "
           image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
           env:
-            - name: { { .Values.app.env.name } }
+            - name: {{ .Values.app.env.name }}
               value: "{{ .Release.Name }}-nclouds-sample-app "
           ports:
-            - containerPort: { { .Values.app.containerPort } }
+            - containerPort: {{ .Values.app.containerPort }}
           resources:
             limits:
-              memory: { { .Values.app.memoryLimit } }
+              memory: {{ .Values.app.memoryLimit }}
             requests:
-              memory: { { .Values.app.memoryRequest } }
+              memory: {{ .Values.app.memoryRequest }}
