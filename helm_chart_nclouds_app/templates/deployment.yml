@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-lester-nclouds-sample-app "
-  namespace: { { .Values.namespace.name } }
+  namespace: { { .Values.namespace } }
   labels:
     app: "{{ .Release.Name }}-ls-nclouds"
     app.kubernetes.io/name: "{{ .Release.Name }}-ls-nclouds"
