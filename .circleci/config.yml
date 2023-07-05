@@ -19,7 +19,7 @@ jobs:
             docker build -t ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${REPO}:${CIRCLE_SHA1:0:10} .
             docker push ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${REPO}:${CIRCLE_SHA1:0:10}
   k8s:
-    docker: 
+    docker:
       - image: arogudl/readytodeploy
     steps:
       - checkout
@@ -32,6 +32,9 @@ jobs:
             export AWS_SESSION_TOKEN=$(echo "${ACCOUNT_ROLE}" | jq -r '.Credentials.SessionToken')
             aws eks update-kubeconfig --name nclouds-cluster --region ${REGION}
             kubectl get pods
+            helm package .\helm_chart_nclouds_app\
+            helm install helm_chart_nclouds_app
+
 workflows:
   nclouds-workflow:
     jobs:

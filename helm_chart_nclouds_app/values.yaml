@@ -1,0 +1,16 @@
+app:
+  image: ncloudspublic/sample-app:latest
+  tag: latest
+  env:
+    name: APPLICATION
+  containerPort: 3000
+  replicas: 3
+  memoryLimit: "256M"
+  memoryRequest: "128M"
+
+service:
+  port: 3000
+  targetPort: 3000
+
+namespace:
+  name: lestersantos
