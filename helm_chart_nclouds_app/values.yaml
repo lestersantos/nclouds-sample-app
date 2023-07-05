@@ -1,5 +1,5 @@
 app:
-  image: ncloudspublic/sample-app:latest
+  image: ncloudspublic/sample-app
   tag: latest
   env:
     name: APPLICATION

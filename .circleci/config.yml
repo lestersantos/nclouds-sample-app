@@ -32,8 +32,8 @@ jobs:
             export AWS_SESSION_TOKEN=$(echo "${ACCOUNT_ROLE}" | jq -r '.Credentials.SessionToken')
             aws eks update-kubeconfig --name nclouds-cluster --region ${REGION}
             kubectl get pods
-            helm package .\helm_chart_nclouds_app\
-            helm install helm_chart_nclouds_app
+            helm package ~/project/helm_chart_nclouds_app
+            helm install ls-test ~/project/helm_chart_nclouds_app
 
 workflows:
   nclouds-workflow:
