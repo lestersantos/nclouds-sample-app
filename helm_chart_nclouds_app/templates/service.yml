@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: "{{ .Release.Name }}-lester-nclouds-sample-app"
   namespace: {{ .Values.namespace }}
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: external.training.test-something.com
 spec:
   selector:
     app.kubernetes.io/name: "{{ .Release.Name }}-ls-nclouds"

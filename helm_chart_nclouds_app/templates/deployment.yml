@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ .Release.Name }}-lester-nclouds-sample-app "
+  name: "{{ .Release.Name }}-lester-nclouds-sample-app"
   namespace: {{ .Values.namespace }}
   labels:
     app: "{{ .Release.Name }}-ls-nclouds"
@@ -17,11 +17,11 @@ spec:
         app: "{{ .Release.Name }}-ls-nclouds"
     spec:
       containers:
-        - name: "{{ .Release.Name }}-sample-app "
+        - name: "{{ .Release.Name }}-sample-app"
           image: "{{ .Values.app.image }}:{{ .Values.app.tag }}"
           env:
             - name: {{ .Values.app.env.name }}
-              value: "{{ .Release.Name }}-nclouds-sample-app "
+              value: "{{ .Release.Name }}-nclouds-sample-app"
           ports:
             - containerPort: {{ .Values.app.containerPort }}
           resources:
